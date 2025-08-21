@@ -34,7 +34,11 @@ const teacherRouter = express.Router();
  *               items:
  *                  $ref: '#/components/schemas/Teacher'
  */
-teacherRouter.get('/', async (req: Request, res: Response, next: NextFunction) => {});
+teacherRouter.get('/', async (req: Request, res: Response, next: NextFunction) => {
+    const teachers = await teacherService.getAllTeachers()
+
+    res.status(200).json(teachers);
+});
 
 /**
  * @swagger
@@ -64,7 +68,7 @@ teacherRouter.get('/', async (req: Request, res: Response, next: NextFunction) =
  */
 teacherRouter.put(
     '/:teacherId/learningpath',
-    async (req: Request, res: Response, next: NextFunction) => {}
+    async (req: Request, res: Response, next: NextFunction) => { }
 );
 
 export { teacherRouter };

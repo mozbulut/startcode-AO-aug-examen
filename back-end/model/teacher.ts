@@ -1,5 +1,5 @@
+import { TeacherWithUser } from '../util/prisma';
 import { User } from './user';
-import { Teacher as TeacherPrisma, User as UserPrisma } from '@prisma/client';
 
 export class Teacher {
     readonly id?: number;
@@ -22,7 +22,13 @@ export class Teacher {
         this.learningPath = teacher.learningPath;
     }
 
-    static from() {
-        return null;
+    static from({ id, createdAt, learningPath, updatedAt, user }: TeacherWithUser) {
+        return new Teacher({
+            id,
+            learningPath,
+            user: User.from(user),
+            createdAt,
+            updatedAt
+        });
     }
 }
