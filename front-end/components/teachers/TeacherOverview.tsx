@@ -26,9 +26,11 @@ const TeacherOverview: React.FC<Props> = ({ teachers }: Props) => {
           </thead>
           <tbody>
             {teachers.map(teacher => (
-              <tr>
+              <tr key={teacher.id}>
                 <td>{teacher.user.lastName} {teacher.user.firstName}</td>
-                <td>{teacher.learningPath}</td>
+                {loggedInUser && loggedInUser.role == 'admin'
+                  ? <LearningPath teacherId={teacher.id} learningPath={teacher.learningPath} />
+                  : <td>{teacher.learningPath}</td>}
               </tr>
             ))}
           </tbody>
