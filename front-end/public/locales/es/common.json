@@ -32,6 +32,6 @@
   },
   "classroom": {
     "add": "Add classroom",
-    "not-authorized": "You are not authorized to view this page"
+    "unauthorized": "You are not authorized to view this page"
   }
 }

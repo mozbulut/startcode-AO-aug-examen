@@ -1,3 +1,4 @@
+import AddClassroomForm from "@components/classroom/AddClassroomForm";
 import Header from "@components/header";
 import { User } from "@types";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -13,6 +14,9 @@ const AddClassroomPage: React.FC = () => {
         setLoggedInUser(JSON.parse(sessionStorage.getItem('loggedInUser')));
     }, [])
 
+    const handleAddClassroom = () => {
+        console.log("called add")
+    }
 
     return (<>
         <Head>
@@ -23,9 +27,10 @@ const AddClassroomPage: React.FC = () => {
             {loggedInUser && loggedInUser.role == 'admin'
                 ? <div>
                     <h1>{t('classroom.add')}</h1>
+                    <AddClassroomForm onSubmit={handleAddClassroom} />
                 </div>
                 : <div>
-                    <p className="text-red-800">{t('classroom.not-authorized')}</p>
+                    <p className="text-red-800">{t('classroom.unauthorized')}</p>
                 </div>
             }
         </main>
