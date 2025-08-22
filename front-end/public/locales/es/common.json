@@ -8,7 +8,9 @@
       "teams": "Grupos",
       "coaches": "Entrenadores",
       "login": "Conéctese",
-      "logout": "Cerrar sesión"
+      "add-teacher": "Add Teacher",
+      "logout": "Cerrar sesión",
+      "add-classroom": "Add Classroom"
     }
   },
   "login": {
@@ -19,10 +21,17 @@
       "name": "Nombre obligatorio",
       "password": "Se requiere contraseña"
     },
-    "label": { "username": "Nombre de usuario:", "password": "Contraseña:" }
+    "label": {
+      "username": "Nombre de usuario:",
+      "password": "Contraseña:"
+    }
   },
   "home": {
     "title": "Bienvenido!",
     "description": "Cursos le permite ver como profesor todos los cursos que está impartiendo y como alumno todos los cursos en los que está matriculado. También puede ver cuándo están programados los cursos y los alumnos matriculados en cada curso."
+  },
+  "classroom": {
+    "add": "Add classroom",
+    "not-authorized": "You are not authorized to view this page"
   }
 }

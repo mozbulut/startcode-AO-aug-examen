@@ -8,6 +8,7 @@
       "classrooms": "Classrooms",
       "teachers": "Teachers",
       "add-teacher": "Add Teacher",
+      "add-classroom": "Add Classroom",
       "login": "Login",
       "logout": "Logout"
     }
@@ -20,10 +21,17 @@
       "name": "Name is required",
       "password": "Password is required"
     },
-    "label": { "username": "Username:", "password": "Password:" }
+    "label": {
+      "username": "Username:",
+      "password": "Password:"
+    }
   },
   "home": {
     "title": "Good luck with the exam!",
     "description": ""
+  },
+  "classroom": {
+    "add": "Add classroom",
+    "not-authorized": "You are not authorized to view this page"
   }
 }
