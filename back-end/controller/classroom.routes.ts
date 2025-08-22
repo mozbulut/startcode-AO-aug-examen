@@ -52,7 +52,7 @@ const classroomRouter = express.Router();
 classroomRouter.post('/', async (req: Request, res: Response, next: NextFunction) => {
     try {
         const classroomInput = <ClassroomInput>req.body;
-        const classroom = await classroomService.createClassroom(classroomInput);
+        const classroom = await classroomService.createClassroom(classroomInput.name.trim());
 
         res.status(201).json(classroom);
     } catch (error) {

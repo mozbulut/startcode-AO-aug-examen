@@ -1,4 +1,5 @@
 import { Classroom as ClassroomPrisma } from '@prisma/client';
+import { ClassroomInput } from '../types';
 
 export class Classroom {
     readonly id?: number;
@@ -8,13 +9,13 @@ export class Classroom {
         id?: number;
         name: string
     }) {
-        this.validate(classroom)
+        this.validate(classroom.name)
         this.id = classroom.id;
         this.name = classroom.name;
     }
 
-    private validate(classroom: { name: string }) {
-        if (!classroom.name?.trim()) {
+    private validate(name: string) {
+        if (!name?.trim()) {
             throw new Error('Classroom name is required');
         }
     }
