@@ -2,21 +2,17 @@ import { useState } from "react";
 import { useTranslation } from 'next-i18next';
 
 type Props = {
-    onSubmit: (name: string) => void;
-
+    onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
+    name: string;
+    setName: (name: string) => void;
+    nameError: string | null;
 }
-const AddClassroomForm: React.FC<Props> = ({ onSubmit }) => {
-    const { t } = useTranslation();
-    const [name, setName] = useState('')
-    const [nameError, setNameError] = useState('');
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        setNameError(null);
-    }
+const AddClassroomForm: React.FC<Props> = ({ onSubmit, name, setName, nameError }) => {
+    const { t } = useTranslation();
 
     return (<>
-        <form onSubmit={handleSubmit} className="max-w-sm mx-auto">
+        <form onSubmit={onSubmit} className="max-w-sm mx-auto">
             <div className="mb-4">
                 <h1 className="text-left">{t('classroom.add-classroom')}</h1>
                 <label htmlFor="nameInput" className="block mb-2 text-sm font-medium">

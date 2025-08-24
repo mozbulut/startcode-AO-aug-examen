@@ -14,6 +14,14 @@ export type User = {
   role?: string;
 };
 
+export type LoggedInUser = {
+  token: string,
+  fullname: string,
+  username: string,
+  role: string,
+};
+
+
 export type StatusMessage = {
   message: string;
   type: 'error' | 'success';
