@@ -1,6 +1,6 @@
 import LearningPath from '@components/learning-path';
 import { Teacher, User } from '@types';
-import { t } from 'i18next';
+import { useTranslation } from 'next-i18next';
 import { useEffect, useState } from 'react';
 
 type Props = {
@@ -8,6 +8,7 @@ type Props = {
 };
 
 const TeacherOverview: React.FC<Props> = ({ teachers }: Props) => {
+  const { t } = useTranslation();
   const [loggedInUser, setLoggedInUser] = useState<User>(null);
 
   useEffect(() => {
@@ -20,8 +21,8 @@ const TeacherOverview: React.FC<Props> = ({ teachers }: Props) => {
         <table>
           <thead>
             <tr>
-              <th scope="col">Name</th>
-              <th scope="col">Learning path</th>
+              <th scope="col">{t('teacher.name')}</th>
+              <th scope="col">{t('teacher.learning-path')}</th>
             </tr>
           </thead>
           <tbody>

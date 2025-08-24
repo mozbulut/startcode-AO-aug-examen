@@ -39,5 +39,10 @@
     "add-success": "Added classroom with name {{name}} and ID {{id}}",
     "add-exits": "Classroom already exists",
     "form-name-required": "Name is required"
+  },
+  "teacher": {
+    "title": "Teachers",
+    "name": "Name",
+    "learning-path": "Learning Path"
   }
 }
