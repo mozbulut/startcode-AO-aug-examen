@@ -3,7 +3,16 @@ import { Teacher } from '../model/teacher';
 
 const getAllTeachers = async (): Promise<Teacher[]> => {
     try {
-        const allTeacherPrisma = await database.teacher.findMany({ include: { user: true } })
+        const allTeacherPrisma = await database.teacher.findMany({
+            include: {
+                user: true
+            },
+            orderBy: {
+                user: {
+                    lastName: 'asc'
+                }
+            }
+        })
         return allTeacherPrisma.map(tp => Teacher.from(tp))
     } catch (error) {
         throw new Error('Database error. See server log for details.');
