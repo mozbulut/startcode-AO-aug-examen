@@ -49,6 +49,12 @@ const AddClassroomPage: React.FC = () => {
                     type: 'error',
                 });
             }
+            else {
+                setStatusMessage({
+                    message: t('general.error'),
+                    type: 'error',
+                });
+            }
         } catch (error) {
             setStatusMessage({ message: t('general.error'), type: 'error' });
         }
