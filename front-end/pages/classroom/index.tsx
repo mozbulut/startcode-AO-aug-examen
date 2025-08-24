@@ -5,7 +5,8 @@ import { LoggedInUser, StatusMessage, User } from "@types";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Head from "next/head";
 import { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next"
+import { useTranslation } from 'next-i18next';
+
 
 const AddClassroomPage: React.FC = () => {
     const { t } = useTranslation();
@@ -15,12 +16,9 @@ const AddClassroomPage: React.FC = () => {
     const [nameFormError, setNameFormError] = useState<string | null>(null);
     const [statusMessage, setStatusMessage] = useState<StatusMessage | null>(null);
 
-    const [loading, setLoading] = useState(true);
-
 
     useEffect(() => {
         setLoggedInUser(JSON.parse(sessionStorage.getItem('loggedInUser')));
-        setLoading(false);
     }, [])
 
 
@@ -56,10 +54,6 @@ const AddClassroomPage: React.FC = () => {
         }
     }
 
-    if (loading) {
-        return <p>{t('general.loading')}</p>;
-    }
-
     return (<>
         <Head>
             <title>{t("classroom.add-classroom")}</title>
@@ -83,9 +77,9 @@ const AddClassroomPage: React.FC = () => {
                         />
                     </div>
                 )
-                : <div>
+                : (<div>
                     <p className="text-center text-red-800">{t('classroom.unauthorized')}</p>
-                </div>
+                </div>)
             }
         </main >
     </>)
