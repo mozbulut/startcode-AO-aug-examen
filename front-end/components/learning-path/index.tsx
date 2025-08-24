@@ -7,20 +7,25 @@ type Props = {
 };
 
 const LearningPath: React.FC<Props> = ({ teacherId, learningPath }: Props) => {
+  const [selectedPath, setSelectedPath] = useState(learningPath);
+
   const handleLearningPathChange = (event: { target: { value: string } }) => {
     {
-      TeacherService.updateLearningPath(teacherId, event.target.value)
+      const newLearningPath = event.target.value;
+      TeacherService.updateLearningPath(teacherId, newLearningPath);
+
+      setSelectedPath(newLearningPath);
     }
   };
 
   return (
-    <div className="ml-6">
-      <select id="learningPath" className="ml-2 p-1" value={learningPath} onChange={handleLearningPathChange}>
+    <td className="ml-6">
+      <select id="learningPath" className="ml-2 p-1" value={selectedPath} onChange={handleLearningPathChange}>
         <option value="Infrastructure">Infrastructure</option>
         <option value="Software development">Software development</option>
         <option value="Cybersecurity">Cybersecurity</option>
       </select>
-    </div>
+    </td>
   );
 };
 

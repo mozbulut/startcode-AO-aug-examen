@@ -14,19 +14,19 @@ const AddClassroomPage: React.FC = () => {
         setLoggedInUser(JSON.parse(sessionStorage.getItem('loggedInUser')));
     }, [])
 
+    if (loggedInUser === null) {
+        return <p>Loading...</p>;
+    }
+
     const handleAddClassroom = () => {
         console.log("called add")
     }
 
     return (<>
-        <Head>
-            <title>{t('classroom.add')}</title>
-        </Head>
         <Header />
-        <main className="p-6 text-center">
+        <main className="p-6">
             {loggedInUser && loggedInUser.role == 'admin'
                 ? <div>
-                    <h1>{t('classroom.add')}</h1>
                     <AddClassroomForm onSubmit={handleAddClassroom} />
                 </div>
                 : <div>
@@ -34,8 +34,7 @@ const AddClassroomPage: React.FC = () => {
                 </div>
             }
         </main>
-    </>
-    )
+    </>)
 }
 
 

@@ -31,7 +31,9 @@
     "description": "Cursos le permite ver como profesor todos los cursos que está impartiendo y como alumno todos los cursos en los que está matriculado. También puede ver cuándo están programados los cursos y los alumnos matriculados en cada curso."
   },
   "classroom": {
-    "add": "Add classroom",
-    "unauthorized": "You are not authorized to view this page"
+    "add-classroom": "Add classroom",
+    "unauthorized": "You are not authorized to view this page",
+    "add": "Add",
+    "label-name": "Name"
   }
 }

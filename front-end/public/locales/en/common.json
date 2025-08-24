@@ -31,7 +31,9 @@
     "description": ""
   },
   "classroom": {
-    "add": "Add classroom",
-    "unauthorized": "You are not authorized to view this page"
+    "add-classroom": "Add classroom",
+    "unauthorized": "You are not authorized to view this page",
+    "add": "Add",
+    "label-name": "Name"
   }
 }
