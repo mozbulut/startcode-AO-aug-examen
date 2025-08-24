@@ -15,19 +15,20 @@ const AddClassroomPage: React.FC = () => {
     const [nameFormError, setNameFormError] = useState<string | null>(null);
     const [statusMessage, setStatusMessage] = useState<StatusMessage | null>(null);
 
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         setLoggedInUser(JSON.parse(sessionStorage.getItem('loggedInUser')));
+        setLoading(false);
     }, [])
 
-    if (loggedInUser === null) {
-        return <p>Loading...</p>;
-    }
 
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
 
         setNameFormError(null);
+        setStatusMessage(null);
 
         if (!name.trim()) {
             setNameFormError(t('classroom.form-name-required'))
@@ -55,6 +56,9 @@ const AddClassroomPage: React.FC = () => {
         }
     }
 
+    if (loading) {
+        return <p>{t('general.loading')}</p>;
+    }
 
     return (<>
         <Head>
@@ -80,7 +84,7 @@ const AddClassroomPage: React.FC = () => {
                     </div>
                 )
                 : <div>
-                    <p className="text-red-800">{t('classroom.unauthorized')}</p>
+                    <p className="text-center text-red-800">{t('classroom.unauthorized')}</p>
                 </div>
             }
         </main >
