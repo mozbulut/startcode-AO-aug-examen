@@ -3,6 +3,7 @@ import Header from "@components/header";
 import ClassroomService from "@services/ClassroomService";
 import { LoggedInUser, StatusMessage, User } from "@types";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import Head from "next/head";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next"
 
@@ -29,7 +30,7 @@ const AddClassroomPage: React.FC = () => {
         setNameFormError(null);
 
         if (!name.trim()) {
-            setNameFormError(t('form-error'))
+            setNameFormError(t('classroom.form-name-required'))
             return;
         }
 
@@ -37,35 +38,38 @@ const AddClassroomPage: React.FC = () => {
             const response = await ClassroomService.addClassroom(name, loggedInUser.token)
             if (response.ok) {
                 const newClassroom = await response.json();
-                console.log(newClassroom)
                 setStatusMessage({
-                    message: t('created'),
-                    type: 'success'
-                })
+                    message: t('classroom.add-success', { name: newClassroom.name, id: newClassroom.id }),
+                    type: 'success',
+                });
+                setName('')
 
             } else if (response.status === 400) {
                 setStatusMessage({
-                    message: t('exits'),
-                    type: 'error'
-                })
+                    message: t('classroom.add-exits'),
+                    type: 'error',
+                });
             }
         } catch (error) {
-            setStatusMessage({
-                message: t('failed'),
-                type: 'error'
-            })
+            setStatusMessage({ message: t('general.error'), type: 'error' });
         }
     }
 
 
     return (<>
+        <Head>
+            <title>{t("classroom.add-classroom")}</title>
+        </Head>
         <Header />
         <main className="p-6">
             {loggedInUser && loggedInUser.role == 'admin'
                 ? (
-                    <div>
+                    <div className="max-w-sm mx-auto">
+                        <h1 className="text-left">{t('classroom.add-classroom')}</h1>
                         {statusMessage && (
-                            statusMessage.type == 'success' ? <div>{statusMessage.message}</div> : <div>{statusMessage.message}</div>
+                            statusMessage.type == 'success'
+                                ? <div className="text-green-800 mb-4">{statusMessage.message}</div>
+                                : <div className="text-red-800 mb-4">{statusMessage.message}</div>
                         )}
                         <AddClassroomForm
                             onSubmit={handleSubmit}

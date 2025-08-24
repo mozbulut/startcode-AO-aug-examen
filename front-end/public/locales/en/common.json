@@ -34,6 +34,9 @@
     "add-classroom": "Add classroom",
     "unauthorized": "You are not authorized to view this page",
     "add": "Add",
-    "label-name": "Name"
+    "label-name": "Name",
+    "add-success": "Added classroom with name {{name}} and ID {{id}}",
+    "add-exits": "Classroom already exists",
+    "form-name-required": "Name is required"
   }
 }

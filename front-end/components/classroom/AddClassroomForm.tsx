@@ -12,9 +12,8 @@ const AddClassroomForm: React.FC<Props> = ({ onSubmit, name, setName, nameError 
     const { t } = useTranslation();
 
     return (<>
-        <form onSubmit={onSubmit} className="max-w-sm mx-auto">
+        <form onSubmit={onSubmit} className="text-left">
             <div className="mb-4">
-                <h1 className="text-left">{t('classroom.add-classroom')}</h1>
                 <label htmlFor="nameInput" className="block mb-2 text-sm font-medium">
                     {t('classroom.label-name')}
                 </label>
