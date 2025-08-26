@@ -18,7 +18,7 @@ test('given a unique classroom name, when a classroom is created, then the class
     classroomDb.findClassroomByName = mockClassroomDbFindClassroomByName.mockResolvedValue(null);
     classroomDb.createClassroom = mockClassroomDbCreateClassroom.mockResolvedValue({ id: 1, name: 'Classroom 1' });
 
-    await classroomService.createClassroom('Classroom 1');
+    await classroomService.createClassroom('Classroom 1', 'admin');
 
     expect(mockClassroomDbFindClassroomByName).toHaveBeenCalledTimes(1);
     expect(mockClassroomDbFindClassroomByName).toHaveBeenCalledWith('Classroom 1');
@@ -32,7 +32,7 @@ test('given a name for an existing classroom, when creating a classroom, then an
     classroomDb.findClassroomByName = mockClassroomDbFindClassroomByName.mockResolvedValue(existingClassroom);
     classroomDb.createClassroom = mockClassroomDbCreateClassroom;
 
-    await expect(classroomService.createClassroom('Classroom 1'))
+    await expect(classroomService.createClassroom('Classroom 1', 'admin'))
         .rejects
         .toThrow(`Classroom with name Classroom 1 is already exits`);
 

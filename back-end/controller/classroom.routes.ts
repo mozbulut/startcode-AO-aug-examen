@@ -49,10 +49,11 @@ const classroomRouter = express.Router();
  *       401:
  *         description: Unauthorized (e.g., not an admin).
  */
-classroomRouter.post('/', async (req: Request, res: Response, next: NextFunction) => {
+classroomRouter.post('/', async (req: Request & { auth: any }, res: Response, next: NextFunction) => {
     try {
+        const { role } = req.auth;
         const classroomInput = <ClassroomInput>req.body;
-        const classroom = await classroomService.createClassroom(classroomInput.name.trim());
+        const classroom = await classroomService.createClassroom(classroomInput.name.trim(), role);
 
         res.status(201).json(classroom);
     } catch (error) {
