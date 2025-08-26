@@ -1,9 +1,10 @@
 import classroomDb from '../repository/classroom.db'
 import { Classroom } from "../model/classroom";
 import { ClassesError, ForbiddenError } from '../error/errors';
+import { Role } from '../types';
 
 
-const createClassroom = async (classroomName: string, role) => {
+const createClassroom = async (classroomName: string, role: Role) => {
     if (role !== 'admin') {
         throw new ForbiddenError(`Unauthorized to perform this action`);
     }
