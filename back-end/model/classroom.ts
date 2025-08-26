@@ -1,5 +1,5 @@
 import { Classroom as ClassroomPrisma } from '@prisma/client';
-import { ClassroomInput } from '../types';
+
 
 export class Classroom {
     readonly id?: number;
