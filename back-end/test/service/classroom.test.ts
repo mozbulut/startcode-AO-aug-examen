@@ -9,6 +9,10 @@ beforeEach(() => {
     mockClassroomDbFindClassroomByName = jest.fn();
 })
 
+afterEach(() => {
+    jest.clearAllMocks();
+})
+
 test('given a unique classroom name, when a classroom is created, then the classroom is created successfully', async () => {
 
     classroomDb.findClassroomByName = mockClassroomDbFindClassroomByName.mockResolvedValue(null);
